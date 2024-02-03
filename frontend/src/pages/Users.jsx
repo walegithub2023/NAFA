@@ -5,11 +5,11 @@ import Footer from "../components/Footer";
 import SideNavbar from "../components/SideNavbar";
 import img6 from "../images/img6.png";
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import usersStore from "../stores/usersStore";
 
 const row1 = {
   paddingRight: "0px",
@@ -23,30 +23,12 @@ const row1 = {
 };
 
 const Users = () => {
-  const [users, setUsers] = useState(null);
+  //access users store
+  const store = usersStore();
 
   useEffect(() => {
-    fetchUsers();
+    store.fetchUsers();
   }, []);
-
-  const fetchUsers = async () => {
-    //Fetch users
-    const res = await axios.get("http://localhost:3001/users");
-    //Set to state
-    setUsers(res.data.users);
-  };
-
-  const handleDelete = async (_id) => {
-    // Implement delete functionality, e.g., send delete request to server
-    //Delete the user
-    const res = await axios.delete(`http://localhost:3001/users/${_id}`);
-    console.log(res);
-    //update state
-    const newUsers = [...users].filter((users) => {
-      return users._id !== _id;
-    });
-    setUsers(newUsers);
-  };
 
   return (
     <div style={row1}>
@@ -119,8 +101,8 @@ const Users = () => {
                 </tr>
               </thead>
               <tbody>
-                {users &&
-                  users.map((users) => {
+                {store.users &&
+                  store.users.map((users) => {
                     return (
                       <tr key={users._id}>
                         <td>{users.svcNo}</td>
@@ -148,7 +130,7 @@ const Users = () => {
                         <td>
                           <FaTrash
                             className="text-black"
-                            onClick={() => handleDelete(users._id)}
+                            onClick={() => store.handleDelete(users._id)}
                             style={{ cursor: "pointer" }}
                           />
                         </td>

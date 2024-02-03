@@ -6,6 +6,7 @@ import SideNavbar from "../components/SideNavbar";
 import img6 from "../images/img6.png";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import usersStore from "../stores/usersStore";
 
 const row1 = {
   paddingRight: "0px",
@@ -18,87 +19,43 @@ const row1 = {
   zIndex: "-1",
 };
 
-// Create a functional component for the dashboard
+const formStyle = {
+  border: "1px solid #ced4da",
+  borderRadius: "3px",
+  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+  padding: "60px",
+  backgroundColor: "#fff",
+};
+
+const buttonStyle = {
+  backgroundColor: "rgb(33, 37, 41)",
+  color: "white",
+  height: "50px",
+  border: "0px solid rgb(33, 37, 41)",
+};
+
+const headerStyle = {
+  border: "1px solid #D3D3D3",
+  fontFamily: "Roboto",
+  padding: "10px",
+};
+
+const messageHeaderStyle = {
+  fontFamily: "",
+  padding: "12px",
+  marginTop: "-30px",
+  backgroundColor: "rgb(33, 37, 41)",
+  textAlign: "center",
+  color: "white",
+  borderRadius: "3px",
+  border: "0px solid rgb(33, 37, 41)",
+  textTransform: "uppercase",
+  fontSize: "85%",
+};
+
 const NewUser = () => {
-  const formStyle = {
-    border: "1px solid #ced4da",
-    borderRadius: "3px",
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-    padding: "60px",
-    backgroundColor: "#fff",
-  };
-
-  const buttonStyle = {
-    backgroundColor: "rgb(33, 37, 41)",
-    color: "white",
-    height: "50px",
-    border: "0px solid rgb(33, 37, 41)",
-  };
-
-  const headerStyle = {
-    border: "1px solid #D3D3D3",
-    fontFamily: "Roboto",
-    padding: "10px",
-  };
-
-  const messageHeaderStyle = {
-    fontFamily: "Arial",
-    padding: "12px",
-    marginTop: "-30px",
-    backgroundColor: "rgb(33, 37, 41)",
-    textAlign: "center",
-    color: "white",
-    borderRadius: "3px",
-    border: "0px solid rgb(33, 37, 41)",
-  };
-
-  //state for success message after successful creation of user
-  const [successMessage, setSuccessMessage] = useState("");
-
-  //State for the form
-  const [createForm, setCreateForm] = useState({
-    svcNo: "",
-    initials: "",
-    surname: "",
-    appt: "",
-    rank: "",
-    password: "",
-    category: "",
-  });
-
-  // Function to handle the changes in svcNo, initials, appt, etc form inputs
-  const upadateCreateFormField = (e) => {
-    const { name, value } = e.target;
-    //set form input fields
-    setCreateForm({
-      ...createForm,
-      [name]: value,
-    });
-  };
-
-  //create user
-  const createUser = async (e) => {
-    e.preventDefault();
-    //create the user
-    const res = await axios.post("http://localhost:3001/users", createForm);
-
-    // success message to display
-    setSuccessMessage("Congratulations! user created successfully!");
-    //  reset message after a certain duration if needed
-    setTimeout(() => setSuccessMessage(""), 5000); // Clear message after 5 seconds
-
-    //clear form state
-    setCreateForm({
-      svcNo: "",
-      initials: "",
-      surname: "",
-      appt: "",
-      rank: "",
-      password: "",
-      category: "",
-    });
-  };
-
+  //access usersStore
+  const store = usersStore();
   return (
     <div style={row1}>
       <Header />
@@ -115,14 +72,14 @@ const NewUser = () => {
           }}
         >
           {/* Main content goes here */}
-          <Row className="justify-content-md-center mt-5">
+          <Row className="justify-content-md-center mt-4">
             <Col md={11}>
-              <Form onSubmit={createUser} style={formStyle}>
+              <Form onSubmit={store.createUser} style={formStyle}>
                 <h5>
                   {/* Display success message */}
-                  {successMessage && (
+                  {store.successMessage1 && (
                     <div className="success-message" style={messageHeaderStyle}>
-                      {successMessage}
+                      {store.successMessage1}
                     </div>
                   )}
                 </h5>
@@ -136,8 +93,8 @@ const NewUser = () => {
                     type="text"
                     placeholder="Enter your svc no"
                     name="svcNo"
-                    value={createForm.svcNo}
-                    onChange={upadateCreateFormField}
+                    value={store.createForm1.svcNo}
+                    onChange={store.updateCreateFormField}
                     required
                   />
                 </Form.Group>
@@ -148,8 +105,8 @@ const NewUser = () => {
                       type="text"
                       placeholder="Enter your initials"
                       name="initials"
-                      value={createForm.initials}
-                      onChange={upadateCreateFormField}
+                      value={store.createForm1.initials}
+                      onChange={store.updateCreateFormField}
                       required
                     />
                   </Form.Group>
@@ -160,8 +117,8 @@ const NewUser = () => {
                       type="text"
                       placeholder="Enter your surname"
                       name="surname"
-                      value={createForm.surname}
-                      onChange={upadateCreateFormField}
+                      value={store.createForm1.surname}
+                      onChange={store.updateCreateFormField}
                       required
                     />
                   </Form.Group>
@@ -174,8 +131,8 @@ const NewUser = () => {
                       type="text"
                       placeholder="Enter your appt"
                       name="appt"
-                      value={createForm.appt}
-                      onChange={upadateCreateFormField}
+                      value={store.createForm1.appt}
+                      onChange={store.updateCreateFormField}
                       required
                     />
                   </Form.Group>
@@ -183,8 +140,8 @@ const NewUser = () => {
                     <Form.Label>Rank:</Form.Label>
                     <Form.Select
                       name="rank"
-                      value={createForm.rank}
-                      onChange={upadateCreateFormField}
+                      value={store.createForm1.rank}
+                      onChange={store.updateCreateFormField}
                       required
                     >
                       <option>-Select-</option>
@@ -214,8 +171,8 @@ const NewUser = () => {
                     type="password"
                     placeholder="Password"
                     name="password"
-                    value={createForm.password}
-                    onChange={upadateCreateFormField}
+                    value={store.createForm1.password}
+                    onChange={store.updateCreateFormField}
                     required
                   />
                 </Form.Group>
@@ -223,8 +180,8 @@ const NewUser = () => {
                   <Form.Label>Category</Form.Label>
                   <Form.Select
                     name="category"
-                    value={createForm.category}
-                    onChange={upadateCreateFormField}
+                    value={store.createForm1.category}
+                    onChange={store.updateCreateFormField}
                     required
                   >
                     <option>-Select-</option>

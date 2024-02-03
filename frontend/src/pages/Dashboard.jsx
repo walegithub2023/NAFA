@@ -17,6 +17,15 @@ const row1 = {
   zIndex: "-1",
 };
 
+const row2 = {
+  width: "105%",
+  marginTop: "50px",
+};
+
+const rowSpecial = {
+  width: "105%",
+};
+
 // Create a functional component for the dashboard
 const Dashboard = () => {
   return (
@@ -31,77 +40,77 @@ const Dashboard = () => {
           md={10}
           className="ml-sm-auto col-lg-9 px-md-4"
           style={{
-            marginTop: "40px",
+            marginTop: "30px",
           }}
         >
           {/* Main content goes here */}
-          <Row>
-            <Col md={2} style={{ marginRight: "41px" }}>
+          <Row style={rowSpecial}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-          </Row>
-
-          <Row style={{ marginTop: "50px" }}>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-          </Row>
-          <Row style={{ marginTop: "50px" }}>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
-              <InfoCard />
-            </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "" }}>
               <InfoCard />
             </Col>
           </Row>
 
-          <Row style={{ marginTop: "50px" }}>
-            <Col md={2} style={{ marginRight: "41px" }}>
+          <Row style={row2}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "48px" }}>
               <InfoCard />
             </Col>
-            <Col md={2} style={{ marginRight: "41px" }}>
+            <Col md={2} style={{ marginRight: "" }}>
+              <InfoCard />
+            </Col>
+          </Row>
+          <Row style={row2}>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "" }}>
+              <InfoCard />
+            </Col>
+          </Row>
+
+          <Row style={row2}>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "48px" }}>
+              <InfoCard />
+            </Col>
+            <Col md={2} style={{ marginRight: "" }}>
               <InfoCard />
             </Col>
           </Row>

@@ -11,6 +11,9 @@ import {
   FaEnvelope,
   FaInfoCircle,
   FaQuestionCircle,
+  FaBuilding,
+  FaChartLine,
+  FaUsers,
 } from "react-icons/fa";
 
 const Header = () => {
@@ -30,10 +33,10 @@ const Header = () => {
       style={{
         paddingLeft: "70px",
         paddingRight: "20px",
-        paddingBottom: "15px",
+        paddingBottom: "20px",
       }}
     >
-      <Navbar.Brand as={Link} to="/">
+      <Navbar.Brand as={Link} to="/home">
         <img
           src={logo3}
           alt="NAF page"
@@ -45,7 +48,7 @@ const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/Home" style={linkStyle}>
+          <Nav.Link as={Link} to="/home" style={linkStyle}>
             <FaHome style={{ marginRight: "10px" }} />
             Home
           </Nav.Link>
@@ -53,6 +56,31 @@ const Header = () => {
             <FaInfoCircle style={{ marginRight: "10px" }} />
             Dashboard
           </Nav.Link>
+
+          <Nav.Link as={Link} to="/archive" style={linkStyle}>
+            <FaInfoCircle style={{ marginRight: "10px" }} />
+            Archive
+          </Nav.Link>
+
+          <Nav.Link as={Link} to="/retrievedocument" style={linkStyle}>
+            <FaInfoCircle style={{ marginRight: "10px" }} />
+            Retrieve
+          </Nav.Link>
+
+          <Nav.Link as={Link} to="/units" style={linkStyle}>
+            <FaBuilding style={{ marginRight: "10px" }} />
+            Units
+          </Nav.Link>
+          <Nav.Link as={Link} to="/chats" style={linkStyle}>
+            <FaChartLine style={{ marginRight: "10px" }} />
+            Charts
+          </Nav.Link>
+
+          <Nav.Link as={Link} to="/users" style={linkStyle}>
+            <FaUsers style={{ marginRight: "10px" }} />
+            Users
+          </Nav.Link>
+
           <Nav.Link as={Link} to="/nafapps" style={linkStyle}>
             <FaTools style={{ marginRight: "10px" }} />
             NAF Apps

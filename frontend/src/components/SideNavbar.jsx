@@ -18,6 +18,7 @@ import { useState } from "react";
 
 const SideNavbar = () => {
   const [isHovered, setIsHovered] = useState(false);
+
   return (
     <Col md={10} className="bg-light" style={{ marginTop: "1px" }}>
       {/* Your side navigation content goes here */}

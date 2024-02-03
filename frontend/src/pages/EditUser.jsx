@@ -7,6 +7,7 @@ import img6 from "../images/img6.png";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import usersStore from "../stores/usersStore";
 
 const row1 = {
   paddingRight: "0px",
@@ -19,103 +20,50 @@ const row1 = {
   zIndex: "-1",
 };
 
+const formStyle = {
+  border: "1px solid #ced4da",
+  borderRadius: "3px",
+  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+  padding: "60px",
+  backgroundColor: "#fff",
+};
+
+const buttonStyle = {
+  backgroundColor: "rgb(33, 37, 41)",
+  color: "white",
+  height: "50px",
+  border: "0px solid rgb(33, 37, 41)",
+};
+
+const headerStyle = {
+  border: "1px solid #D3D3D3",
+  fontFamily: "Roboto",
+  padding: "10px",
+};
+
+const messageHeaderStyle = {
+  fontFamily: "",
+  padding: "12px",
+  marginTop: "-30px",
+  backgroundColor: "rgb(33, 37, 41)",
+  textAlign: "center",
+  color: "white",
+  borderRadius: "3px",
+  border: "0px solid rgb(33, 37, 41)",
+  textTransform: "uppercase",
+  fontSize: "85%",
+};
+
 const EditUser = () => {
-  const formStyle = {
-    border: "1px solid #ced4da",
-    borderRadius: "3px",
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-    padding: "60px",
-    backgroundColor: "#fff",
-  };
+  //access usersStore
+  const store = usersStore();
 
-  const buttonStyle = {
-    backgroundColor: "rgb(33, 37, 41)",
-    color: "white",
-    height: "50px",
-    border: "0px solid rgb(33, 37, 41)",
-  };
-
-  const headerStyle = {
-    border: "1px solid #D3D3D3",
-    fontFamily: "Roboto",
-    padding: "10px",
-  };
-
-  const messageHeaderStyle = {
-    fontFamily: "Arial",
-    padding: "12px",
-    marginTop: "-30px",
-    backgroundColor: "rgb(33, 37, 41)",
-    textAlign: "center",
-    color: "white",
-    borderRadius: "3px",
-    border: "0px solid rgb(33, 37, 41)",
-  };
-
-  //state for success message after successful update
-  const [successMessage, setSuccessMessage] = useState("");
-
-  const { id } = useParams();
-
-  const [userData, setUserData] = useState({
-    svcNo: "",
-    initials: "",
-    surname: "",
-    appt: "",
-    rank: "",
-    password: "",
-    category: "",
-  });
+  //get user id from EditUser page
+  const { id2 } = useParams();
 
   useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const fetchUserData = async () => {
-    try {
-      // Fetch user data
-      const res = await axios.get(`http://localhost:3001/users/${id}`);
-      console.log(res);
-
-      // Access nested user object
-      const user = res.data.user;
-
-      // Set default values to userData
-      setUserData({
-        svcNo: user.svcNo,
-        initials: user.initials,
-        surname: user.surname,
-        appt: user.appt,
-        rank: user.rank,
-        password: user.password,
-        category: user.category,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.put(
-        `http://localhost:3001/users/${id}`,
-        userData
-      );
-      console.log(res);
-      // success message to display after successful update
-      setSuccessMessage("Congratulations! user updated successfully!");
-      //  reset message after a certain duration if needed
-      setTimeout(() => setSuccessMessage(""), 5000); // Clear message after 5 seconds
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    store.fetchUserData2(id2);
+  }, [id2]);
 
   return (
     <div style={row1}>
@@ -133,14 +81,17 @@ const EditUser = () => {
           }}
         >
           {/* Main content goes here */}
-          <Row className="justify-content-md-center mt-5">
+          <Row className="justify-content-md-center mt-4">
             <Col md={11}>
-              <Form onSubmit={handleFormSubmit} style={formStyle}>
+              <Form
+                onSubmit={(e) => store.updateUser(e, id2)}
+                style={formStyle}
+              >
                 <h5>
                   {/* Display success message */}
-                  {successMessage && (
+                  {store.successMessage2 && (
                     <div className="success-message" style={messageHeaderStyle}>
-                      {successMessage}
+                      {store.successMessage2}
                     </div>
                   )}
                 </h5>
@@ -155,8 +106,9 @@ const EditUser = () => {
                     placeholder="Enter your svc no"
                     name="svcNo"
                     required
-                    defaultValue={userData.svcNo}
-                    onChange={handleInputChange}
+                    readOnly
+                    defaultValue={store.userData2.svcNo}
+                    style={{ backgroundColor: "#F5F5F5" }}
                   />
                 </Form.Group>
                 <Row className="mb-3">
@@ -167,8 +119,8 @@ const EditUser = () => {
                       placeholder="Enter your initials"
                       name="initials"
                       required
-                      defaultValue={userData.initials}
-                      onChange={handleInputChange}
+                      defaultValue={store.userData2.initials}
+                      onChange={store.updateCreateFormField2}
                     />
                   </Form.Group>
 
@@ -179,8 +131,8 @@ const EditUser = () => {
                       placeholder="Enter your surname"
                       name="surname"
                       required
-                      defaultValue={userData.surname}
-                      onChange={handleInputChange}
+                      defaultValue={store.userData2.surname}
+                      onChange={store.updateCreateFormField2}
                     />
                   </Form.Group>
                 </Row>
@@ -193,8 +145,8 @@ const EditUser = () => {
                       placeholder="Enter your appt"
                       name="appt"
                       required
-                      defaultValue={userData.appt}
-                      onChange={handleInputChange}
+                      defaultValue={store.userData2.appt}
+                      onChange={store.updateCreateFormField2}
                     />
                   </Form.Group>
                   <Form.Group as={Col} controlId="forrank">
@@ -202,8 +154,8 @@ const EditUser = () => {
                     <Form.Select
                       name="rank"
                       required
-                      defaultValue={userData.rank}
-                      onChange={handleInputChange}
+                      defaultValue={store.userData2.rank}
+                      onChange={store.updateCreateFormField2}
                     >
                       <option>-Select-</option>
                       <option>AVM</option>
@@ -226,38 +178,33 @@ const EditUser = () => {
                   </Form.Group>
                 </Row>
 
-                <Form.Group controlId="formPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    required
-                    defaultValue=""
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
-                <Form.Group controlId="userCategory">
-                  <Form.Label>Category</Form.Label>
-                  <Form.Select
-                    required
-                    name="category"
-                    defaultValue={userData.category}
-                    onChange={handleInputChange}
-                  >
-                    <option>-Select-</option>
-                    <option>Admin</option>
-                    <option>Editor</option>
-                    <option>Reader</option>
-                  </Form.Select>
-                </Form.Group>
-
-                <Form.Group controlId="formCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label="I agree to the terms and conditions"
-                  />
-                </Form.Group>
+                <Row className="mb-3">
+                  <Form.Group as={Col} controlId="formPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      required
+                      defaultValue=""
+                      onChange={store.updateCreateFormField2}
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} controlId="userCategory">
+                    <Form.Label>Category</Form.Label>
+                    <Form.Select
+                      required
+                      name="category"
+                      defaultValue={store.userData2.category}
+                      onChange={store.updateCreateFormField2}
+                    >
+                      <option>-Select-</option>
+                      <option>Admin</option>
+                      <option>Editor</option>
+                      <option>Reader</option>
+                    </Form.Select>
+                  </Form.Group>
+                </Row>
 
                 <Button
                   variant="primary"

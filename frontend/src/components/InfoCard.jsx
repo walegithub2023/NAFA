@@ -25,7 +25,7 @@ const InfoCard = () => {
     <Card style={cardStyle}>
       <Card.Body>
         <Card.Title style={{ fontSize: "200%", marginTop: "0px" }}>
-          50
+          1050
         </Card.Title>
         <Card.Text>CIS</Card.Text>
         <Button style={openButton}>OPEN</Button>

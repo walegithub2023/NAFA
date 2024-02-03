@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import Page404 from "./pages/Page404";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
@@ -14,6 +15,7 @@ import ArchiveSignalDocument from "./pages/ArchiveSignalDocument";
 import ArchiveFloatDocument from "./pages/ArchiveFloatDocument";
 import EditUser from "./pages/EditUser";
 import ViewUser from "./pages/ViewUser";
+import RequireAuth from "./components/RequireAuth";
 
 const App = () => {
   return (
@@ -21,27 +23,112 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/archive" element={<Archive />} />
-        <Route path="/retrievedocument" element={<RetrieveDocument />} />
-        <Route path="/*" element={<Page404 />} />
-        <Route path="/logout" element={<Login />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/newuser" element={<NewUser />} />
-        <Route path="/archivedocument" element={<ArchiveDocument />} />
-        <Route path="/logout" element={<Login />} />
+        <Route
+          path="/Home"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/archive"
+          element={
+            <RequireAuth>
+              <Archive />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/retrievedocument"
+          element={
+            <RequireAuth>
+              <RetrieveDocument />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/*"
+          element={
+            <RequireAuth>
+              <Page404 />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/users"
+          element={
+            <RequireAuth>
+              <Users />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/test"
+          element={
+            <RequireAuth>
+              <Test />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/newuser"
+          element={
+            <RequireAuth>
+              <NewUser />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/archivedocument"
+          element={
+            <RequireAuth>
+              <ArchiveDocument />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/archivefloatdocument"
-          element={<ArchiveFloatDocument />}
+          element={
+            <RequireAuth>
+              <ArchiveFloatDocument />
+            </RequireAuth>
+          }
         />
         <Route
           path="/archivesignaldocument"
-          element={<ArchiveSignalDocument />}
+          element={
+            <RequireAuth>
+              <ArchiveSignalDocument />
+            </RequireAuth>
+          }
         />
-        <Route path="/edituser/:id" element={<EditUser />} />
-        <Route path="/viewuser/:id" element={<ViewUser />} />
+        <Route
+          path="/edituser/:id2"
+          element={
+            <RequireAuth>
+              <EditUser />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/viewuser/:id"
+          element={
+            <RequireAuth>
+              <ViewUser />
+            </RequireAuth>
+          }
+        />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </>
   );

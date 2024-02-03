@@ -23,6 +23,7 @@ const ArchiveDocument = () => {
     borderRadius: "3px",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     padding: "80px",
+    paddingBottom: "70px",
     backgroundColor: "#fff",
   };
 
@@ -57,7 +58,7 @@ const ArchiveDocument = () => {
           }}
         >
           {/* Main content goes here */}
-          <Row className="justify-content-md-center mt-5">
+          <Row className="justify-content-md-center mt-4">
             <Col md={11}>
               <Form style={formStyle}>
                 <h3 className="text-center mb-4" style={headerStyle}>
@@ -129,11 +130,11 @@ const ArchiveDocument = () => {
                       <option>HQ MC</option>
                     </Form.Select>
                   </Form.Group>
+                  <Form.Group as={Col} controlId="date">
+                    <Form.Label>Date:</Form.Label>
+                    <Form.Control type="Date" style={formInput} />
+                  </Form.Group>
                 </Row>
-                <Form.Group controlId="date">
-                  <Form.Label>Date:</Form.Label>
-                  <Form.Control type="Date" style={formInput} />
-                </Form.Group>
 
                 <Row className="mb-3">
                   <Form.Group as={Col} controlId="security">
@@ -156,14 +157,6 @@ const ArchiveDocument = () => {
                     />
                   </Form.Group>
                 </Row>
-
-                <Form.Group controlId="formCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label="I agree to the terms and conditions"
-                    style={formInput}
-                  />
-                </Form.Group>
 
                 <Button
                   variant="primary"

@@ -23,6 +23,7 @@ const ArchiveFloatDocument = () => {
     borderRadius: "3px",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     padding: "80px",
+    paddingBottom: "70px",
     backgroundColor: "#fff",
   };
 
@@ -57,7 +58,7 @@ const ArchiveFloatDocument = () => {
           }}
         >
           {/* Main content goes here */}
-          <Row className="justify-content-md-center mt-5">
+          <Row className="justify-content-md-center mt-4">
             <Col md={11}>
               <Form style={formStyle}>
                 <h4 className="text-center mb-4" style={headerStyle}>
@@ -129,6 +130,16 @@ const ArchiveFloatDocument = () => {
                       <option>HQ MC</option>
                     </Form.Select>
                   </Form.Group>
+                  <Form.Group as={Col} controlId="security">
+                    <Form.Label>Security Class:</Form.Label>
+                    <Form.Select style={formInput}>
+                      <option>-Select-</option>
+                      <option>Top Secret</option>
+                      <option>Secret</option>
+                      <option>Confidential</option>
+                      <option>Restricted</option>
+                    </Form.Select>
+                  </Form.Group>
                 </Row>
 
                 <Row className="mb-3">
@@ -152,20 +163,6 @@ const ArchiveFloatDocument = () => {
                       style={formInput}
                     />
                   </Form.Group>
-                </Row>
-
-                <Row className="mb-3">
-                  <Form.Group as={Col} controlId="security">
-                    <Form.Label>Security Class:</Form.Label>
-                    <Form.Select style={formInput}>
-                      <option>-Select-</option>
-                      <option>Top Secret</option>
-                      <option>Secret</option>
-                      <option>Confidential</option>
-                      <option>Restricted</option>
-                    </Form.Select>
-                  </Form.Group>
-
                   <Form.Group as={Col} controlId="file">
                     <Form.Label>Upload Float:</Form.Label>
                     <Form.Control
@@ -175,13 +172,6 @@ const ArchiveFloatDocument = () => {
                     />
                   </Form.Group>
                 </Row>
-                <Form.Group controlId="formCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label="I agree to the terms and conditions"
-                    style={formInput}
-                  />
-                </Form.Group>
 
                 <Button
                   variant="primary"

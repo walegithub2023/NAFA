@@ -12,6 +12,7 @@ import { FaUser } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import usersStore from "../stores/usersStore";
 
 const row1 = {
   paddingRight: "0px",
@@ -27,45 +28,15 @@ const row1 = {
 const tableDataStyle = { textAlign: "left", paddingLeft: "30px" };
 
 const ViewUser = () => {
+  //access users store
+  const store = usersStore();
+
+  // get id from ViewUser page url
   const { id } = useParams();
 
-  const [userData, setUserData] = useState({
-    svcNo: "",
-    initials: "",
-    surname: "",
-    appt: "",
-    rank: "",
-    password: "",
-    category: "",
-  });
-
   useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const fetchUserData = async () => {
-    try {
-      // Fetch user data
-      const res = await axios.get(`http://localhost:3001/users/${id}`);
-      console.log(res);
-
-      // Access nested user object
-      const user = res.data.user;
-
-      // Set default values to userData
-      setUserData({
-        svcNo: user.svcNo,
-        initials: user.initials,
-        surname: user.surname,
-        appt: user.appt,
-        rank: user.rank,
-        password: user.password,
-        category: user.category,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    store.fetchUserData(id);
+  }, [id]);
 
   return (
     <div style={row1}>
@@ -133,27 +104,27 @@ const ViewUser = () => {
                 {/*table content */}
                 <tr>
                   <td style={tableDataStyle}>SVC NO:</td>
-                  <td> {userData.svcNo}</td>
+                  <td> {store.userData.svcNo}</td>
                 </tr>
                 <tr>
                   <td style={tableDataStyle}>RANK:</td>
-                  <td> {userData.rank}</td>
+                  <td> {store.userData.rank}</td>
                 </tr>
                 <tr>
                   <td style={tableDataStyle}>INITIALS:</td>
-                  <td> {userData.initials}</td>
+                  <td> {store.userData.initials}</td>
                 </tr>
                 <tr>
                   <td style={tableDataStyle}>SURNAME:</td>
-                  <td> {userData.surname}</td>
+                  <td> {store.userData.surname}</td>
                 </tr>
                 <tr>
                   <td style={tableDataStyle}>APPT:</td>
-                  <td> {userData.appt}</td>
+                  <td> {store.userData.appt}</td>
                 </tr>
                 <tr>
                   <td style={tableDataStyle}>CATEGORY:</td>
-                  <td> {userData.category}</td>
+                  <td> {store.userData.category}</td>
                 </tr>
               </tbody>
               <tfoot>

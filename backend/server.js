@@ -7,23 +7,31 @@ if (process.env.NODE_ENV != "production") {
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const connectToDb = require("./config/connectToDb");
 const usersController = require("./controllers/usersController");
+const requireAuth = require("./middleware/requireAuth");
 
 //create express app
 const app = express();
 
-//configure express app for json and cors
+//configure express app for json, cors and cookie-parser
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 
 //connect to database
 connectToDb();
 
 //Routing
-
 app.post("/login", usersController.login);
 app.get("/logout", usersController.logout);
+app.get("/check-auth", requireAuth, usersController.checkAuth);
 app.get("/users", usersController.fetchUsers);
 
 app.get("/users/:id", usersController.fetchUser);
