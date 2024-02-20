@@ -19,24 +19,32 @@ const row1 = {
 };
 
 const cardStyle = {
-  width: "16rem",
   textAlign: "center",
   border: "1px solid #ced4da",
   borderRadius: "3px", // Add border-radius for a rounded corner
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Add box shadow
   paddingBottom: "25px",
-  height: "210px",
   backgroundColor: "",
+  paddingTop: "12px",
+  width: "235px",
 };
 
 const iconStyle = {
   margin: "20px auto",
-  fontSize: "150px",
-  paddingTop: "12px",
+  fontSize: "100px",
 };
 
 const linkStyle = {
   textDecoration: "none",
+};
+
+const rowStyle = {
+  paddingLeft: "40px",
+};
+
+const rowStyle2 = {
+  paddingLeft: "40px",
+  marginTop: "50px",
 };
 
 const Archive = () => {
@@ -52,18 +60,18 @@ const Archive = () => {
           md={10}
           className="ml-sm-auto col-lg-9 px-md-4"
           style={{
-            marginTop: "50px",
+            marginTop: "35px",
           }}
         >
           {/* Main content goes here */}
-          <Row>
-            <Col md={2} style={{ marginRight: "125px" }}>
+          <Row style={rowStyle}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivesignaldocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>SIGNAL</Card.Text>
                   </Card.Body>
@@ -71,26 +79,26 @@ const Archive = () => {
               </Link>
             </Col>
 
-            <Col md={2} style={{ marginRight: "125px" }}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>LOOSE MINUTE</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
             </Col>
-            <Col md={2} style={{ marginRight: "125px" }}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>LETTER</Card.Text>
                   </Card.Body>
@@ -103,7 +111,7 @@ const Archive = () => {
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>MEMO</Card.Text>
                   </Card.Body>
@@ -112,40 +120,40 @@ const Archive = () => {
             </Col>
           </Row>
 
-          <Row style={{ marginTop: "50px" }}>
-            <Col md={2} style={{ marginRight: "125px" }}>
+          <Row style={rowStyle2}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>MINUTES OF MEETING</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
             </Col>
-            <Col md={2} style={{ marginRight: "125px" }}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>ELECTRONIC SHORT MSG</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
             </Col>
-            <Col md={2} style={{ marginRight: "125px" }}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>ADMIN ORDERS</Card.Text>
                   </Card.Body>
@@ -158,7 +166,7 @@ const Archive = () => {
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>INSTR FOR TAC EX</Card.Text>
                   </Card.Body>
@@ -167,40 +175,40 @@ const Archive = () => {
             </Col>
           </Row>
 
-          <Row style={{ marginTop: "50px" }}>
-            <Col md={2} style={{ marginRight: "125px" }}>
+          <Row style={rowStyle2}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>CONFIRMATORY NOTES</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
             </Col>
-            <Col md={2} style={{ marginRight: "125px" }}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text>EXTIMATE PROCESS</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
             </Col>
-            <Col md={2} style={{ marginRight: "125px" }}>
+            <Col md={2} style={{ marginRight: "120px" }}>
               <Link to="/archivedocument" style={linkStyle}>
                 <Card style={cardStyle}>
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "200%", marginTop: "-13px" }}
+                      style={{ fontSize: "200%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text> ANNEXES & APPENDICES</Card.Text>
                   </Card.Body>
@@ -213,7 +221,7 @@ const Archive = () => {
                   <FaFolderOpen style={iconStyle} />
                   <Card.Body>
                     <Card.Title
-                      style={{ fontSize: "100%", marginTop: "-13px" }}
+                      style={{ fontSize: "100%", marginTop: "-40px" }}
                     ></Card.Title>
                     <Card.Text> FLOAT</Card.Text>
                   </Card.Body>

@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, NavLink } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import {
   FaHome,
   FaSignOutAlt,
@@ -13,6 +13,7 @@ import {
   FaTools,
   FaUsers,
   FaInfoCircle,
+  FaFilePdf,
 } from "react-icons/fa";
 import { useState } from "react";
 
@@ -20,14 +21,18 @@ const SideNavbar = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Col md={10} className="bg-light" style={{ marginTop: "1px" }}>
+    <Col
+      md={10}
+      className="bg-dark"
+      style={{ marginTop: "1px", height: "100%" }}
+    >
       {/* Your side navigation content goes here */}
       <Navbar
         bg="dark"
         variant="dark"
         expand="lg"
         className="flex-column"
-        style={{ paddingBottom: "400px" }}
+        style={{ paddingBottom: "50px" }}
       >
         <Navbar.Brand href="#home"></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -53,13 +58,9 @@ const SideNavbar = () => {
               Retrieve
             </Nav.Link>
 
-            <Nav.Link as={Link} to="/nafapps">
-              <FaTools style={{ marginRight: "10px" }} />
-              NAF Apps
-            </Nav.Link>
-            <Nav.Link as={Link} to="/services">
-              <FaHome style={{ marginRight: "10px" }} />
-              Services
+            <Nav.Link as={Link} to="/archived">
+              <FaFilePdf style={{ marginRight: "10px" }} />
+              Archived
             </Nav.Link>
 
             <Nav.Link as={Link} to="/branches">
@@ -69,6 +70,10 @@ const SideNavbar = () => {
             <Nav.Link as={Link} to="/directorates">
               <FaBuilding style={{ marginRight: "10px" }} />
               Directorates
+            </Nav.Link>
+            <Nav.Link as={Link} to="/commands">
+              <FaBuilding style={{ marginRight: "10px" }} />
+              Commands
             </Nav.Link>
             <Nav.Link as={Link} to="/drus">
               <FaHome style={{ marginRight: "10px" }} />
@@ -81,6 +86,15 @@ const SideNavbar = () => {
             <Nav.Link as={Link} to="/chats">
               <FaChartLine style={{ marginRight: "10px" }} />
               Charts
+            </Nav.Link>
+
+            <Nav.Link as={Link} to="/nafapps">
+              <FaTools style={{ marginRight: "10px" }} />
+              NAF Apps
+            </Nav.Link>
+            <Nav.Link as={Link} to="/services">
+              <FaHome style={{ marginRight: "10px" }} />
+              Services
             </Nav.Link>
 
             <Nav.Link as={Link} to="/users">

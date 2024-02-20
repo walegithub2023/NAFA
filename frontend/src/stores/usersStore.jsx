@@ -115,8 +115,8 @@ const usersStore = create((set) => ({
       // create the user
       const res = await axios.post("http://localhost:3001/users", createForm1);
 
-      // success message to display after successful update
-      set({ successMessage1: "Congratulations! user updated successfully!" });
+      // success message to display after successful creation
+      set({ successMessage1: "Congratulations! user created successfully!" });
 
       // reset message after a certain duration if needed
       setTimeout(() => set({ successMessage1: "" }), 5000); // Clear message after 5 seconds

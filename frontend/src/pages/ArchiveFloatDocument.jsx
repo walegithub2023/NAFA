@@ -75,6 +75,24 @@ const ArchiveFloatDocument = () => {
                 </Form.Group>
 
                 <Row className="mb-3">
+                  <Form.Group as={Col} controlId="documentType">
+                    <Form.Label>Type:</Form.Label>
+                    <Form.Select style={formInput} required name="documentType">
+                      <option>-Select-</option>
+                      <option>Signal</option>
+                      <option>Loose Minute</option>
+                      <option>Letter</option>
+                      <option>Memo</option>
+                      <option>Minutes of Meeting</option>
+                      <option>Electronic Short Msg</option>
+                      <option>Admin Orders</option>
+                      <option>Instr for Tac Ex</option>
+                      <option>Confirmatory Notes</option>
+                      <option>Extimate Process</option>
+                      <option>Annexs & Appendices</option>
+                      <option>Float</option>
+                    </Form.Select>
+                  </Form.Group>
                   <Form.Group as={Col} controlId="preref">
                     <Form.Label>Pre-Ref:</Form.Label>
                     <Form.Control
@@ -140,10 +158,14 @@ const ArchiveFloatDocument = () => {
                       <option>Restricted</option>
                     </Form.Select>
                   </Form.Group>
+                  <Form.Group as={Col} controlId="documentDate">
+                    <Form.Label>Document Date:</Form.Label>
+                    <Form.Control type="Date" style={formInput} />
+                  </Form.Group>
                 </Row>
 
                 <Row className="mb-3">
-                  <Form.Group as={Col} controlId="date">
+                  <Form.Group as={Col} controlId="archivedDate">
                     <Form.Label>Date:</Form.Label>
                     <Form.Control type="Date" style={formInput} />
                   </Form.Group>

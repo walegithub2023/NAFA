@@ -4,8 +4,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideNavbar from "../components/SideNavbar";
 import img6 from "../images/img6.png";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import usersStore from "../stores/usersStore";
 
 const row1 = {

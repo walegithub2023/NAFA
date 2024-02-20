@@ -5,8 +5,7 @@ import Footer from "../components/Footer";
 import SideNavbar from "../components/SideNavbar";
 import img6 from "../images/img6.png";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import usersStore from "../stores/usersStore";
 
 const row1 = {

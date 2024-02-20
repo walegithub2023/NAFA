@@ -5,14 +5,13 @@ import Footer from "../components/Footer";
 import SideNavbar from "../components/SideNavbar";
 import img6 from "../images/img6.png";
 
-import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import usersStore from "../stores/usersStore";
+import { useEffect } from "react";
+
+import documentsStore from "../stores/documentsStore";
 
 const row1 = {
   paddingRight: "0px",
@@ -28,15 +27,15 @@ const row1 = {
 const tableDataStyle = { textAlign: "left", paddingLeft: "50px" };
 const tableDataStyle2 = { textAlign: "right", paddingRight: "50px" };
 
-const ViewUser = () => {
-  //access users store
-  const store = usersStore();
+const ViewArchivedDocument = () => {
+  //access documents store
+  const store = documentsStore();
 
-  // get id from ViewUser page url
+  // get id from ViewArchivedDocument page url
   const { id } = useParams();
 
   useEffect(() => {
-    store.fetchUserData(id);
+    store.fetchDocumentData(id);
   }, [id]);
 
   return (
@@ -75,7 +74,7 @@ const ViewUser = () => {
               }}
             >
               <FaUser style={{ marginRight: "10px" }} />
-              CREATE USER
+              ARCHIVE
             </Link>
             <h5
               className="text-center"
@@ -88,7 +87,7 @@ const ViewUser = () => {
                 textTransform: "uppercase",
               }}
             >
-              USER DETAILS
+              ARCHIVED DOCUMENT DETAILS
             </h5>
             <Table
               striped
@@ -104,28 +103,46 @@ const ViewUser = () => {
               <tbody>
                 {/*table content */}
                 <tr>
-                  <td style={tableDataStyle}>SVC NO:</td>
-                  <td style={tableDataStyle2}> {store.userData.svcNo}</td>
+                  <td style={tableDataStyle}>REFERENCE:</td>
+                  <td style={tableDataStyle2}> {store.documentData.ref}</td>
                 </tr>
                 <tr>
-                  <td style={tableDataStyle}>RANK:</td>
-                  <td style={tableDataStyle2}> {store.userData.rank}</td>
+                  <td style={tableDataStyle}>SUBJECT:</td>
+                  <td style={tableDataStyle2}> {store.documentData.subject}</td>
                 </tr>
                 <tr>
-                  <td style={tableDataStyle}>INITIALS:</td>
-                  <td style={tableDataStyle2}> {store.userData.initials}</td>
+                  <td style={tableDataStyle}>SECURITY CLASSIFICATION:</td>
+                  <td style={tableDataStyle2}>
+                    {store.documentData.securityClass}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={tableDataStyle}>SURNAME:</td>
-                  <td style={tableDataStyle2}> {store.userData.surname}</td>
+                  <td style={tableDataStyle}>DOCUMENT DATE:</td>
+                  <td style={tableDataStyle2}>
+                    {" "}
+                    {store.documentData.documentDate}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={tableDataStyle}>APPT:</td>
-                  <td style={tableDataStyle2}> {store.userData.appt}</td>
+                  <td style={tableDataStyle}>DATE ARCHIVED:</td>
+                  <td style={tableDataStyle2}>
+                    {" "}
+                    {store.documentData.archivedDate}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={tableDataStyle}>CATEGORY:</td>
-                  <td style={tableDataStyle2}> {store.userData.category}</td>
+                  <td style={tableDataStyle}>UNIT:</td>
+                  <td style={tableDataStyle2}>{store.documentData.unit}</td>
+                </tr>
+                <tr>
+                  <td style={tableDataStyle}>DTG:</td>
+                  <td style={tableDataStyle2}>{store.documentData.dtg}</td>
+                </tr>
+                <tr>
+                  <td style={tableDataStyle}>CONTROL NO:</td>
+                  <td style={tableDataStyle2}>
+                    {store.documentData.controlNo}
+                  </td>
                 </tr>
               </tbody>
               <tfoot>
@@ -144,4 +161,4 @@ const ViewUser = () => {
   );
 };
 
-export default ViewUser;
+export default ViewArchivedDocument;

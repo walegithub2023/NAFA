@@ -14,6 +14,7 @@ import {
   FaBuilding,
   FaChartLine,
   FaUsers,
+  FaFilePdf,
 } from "react-icons/fa";
 
 const Header = () => {
@@ -63,8 +64,13 @@ const Header = () => {
           </Nav.Link>
 
           <Nav.Link as={Link} to="/retrievedocument" style={linkStyle}>
-            <FaInfoCircle style={{ marginRight: "10px" }} />
+            <FaFilePdf style={{ marginRight: "10px" }} />
             Retrieve
+          </Nav.Link>
+
+          <Nav.Link as={Link} to="/archived" style={linkStyle}>
+            <FaFilePdf style={{ marginRight: "10px" }} />
+            Archived
           </Nav.Link>
 
           <Nav.Link as={Link} to="/units" style={linkStyle}>
@@ -81,10 +87,6 @@ const Header = () => {
             Users
           </Nav.Link>
 
-          <Nav.Link as={Link} to="/nafapps" style={linkStyle}>
-            <FaTools style={{ marginRight: "10px" }} />
-            NAF Apps
-          </Nav.Link>
           <Nav.Link as={Link} to="/services" style={linkStyle}>
             <FaCogs style={{ marginRight: "10px" }} />
             Services

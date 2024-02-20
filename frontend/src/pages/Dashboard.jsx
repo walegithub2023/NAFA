@@ -20,10 +20,12 @@ const row1 = {
 const row2 = {
   width: "105%",
   marginTop: "50px",
+  marginLeft: "3px",
 };
 
 const rowSpecial = {
   width: "105%",
+  marginLeft: "3px",
 };
 
 // Create a functional component for the dashboard
@@ -40,7 +42,7 @@ const Dashboard = () => {
           md={10}
           className="ml-sm-auto col-lg-9 px-md-4"
           style={{
-            marginTop: "30px",
+            marginTop: "34px",
           }}
         >
           {/* Main content goes here */}

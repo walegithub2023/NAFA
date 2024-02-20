@@ -16,6 +16,7 @@ import ArchiveFloatDocument from "./pages/ArchiveFloatDocument";
 import EditUser from "./pages/EditUser";
 import ViewUser from "./pages/ViewUser";
 import RequireAuth from "./components/RequireAuth";
+import Archived from "./pages/Archived";
 
 const App = () => {
   return (
@@ -52,6 +53,14 @@ const App = () => {
           element={
             <RequireAuth>
               <RetrieveDocument />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/archived"
+          element={
+            <RequireAuth>
+              <Archived />
             </RequireAuth>
           }
         />

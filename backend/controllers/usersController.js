@@ -79,7 +79,7 @@ const fetchUsers = async (req, res) => {
 //fetch single user
 const fetchUser = async (req, res) => {
   try {
-    //Get id of the url
+    //Get id off the url
     const userId = req.params.id;
     //find the user using the id
     const user = await User.findById(userId);
